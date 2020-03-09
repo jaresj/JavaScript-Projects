@@ -54,3 +54,4 @@ function Time_function() {
         }
     document.getElementById("Time_of_day").innerHTML = Reply;
 }
+
