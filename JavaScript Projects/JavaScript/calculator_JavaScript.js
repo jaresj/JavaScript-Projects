@@ -87,29 +87,35 @@ function Calculator_Reset() {
 }
 // this function updates the screen with the contents of Display_Value
 function Update_Display() {
-    const display = document.querySelector(".calculator-screen");
+    const display = document.querySelector('.calculator-screen');
     display.value = Calculator.Display_Value;
 }
 
 Update_Display();
 //this section monitors button clicks
-const keys= document.querySelector(".calculator-keys");
-keys.addEventListener("click", (event) => {
+const keys= document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
     // the target variable is an object that represent the element
     // that was clicked
     const { target } = event;
     // if the element that was clicked on is not a button, exit the function
-    if (!target.matches("button")) {
+    if (!target.matches('button')) {
         return;
     }
 
-    if (target.classList.contains("operator")) {
+    if (target.classList.contains('operator')) {
         Handle_Operator(target.value);
         Update_Display();
         return;
     }
+
+    if (target.classList.contains('decimal')) {
+        Input_Digit(target.value);
+        Update_Display();
+        return;
+    }
     //ensures that AC clears the numbers from the Calculator
-    if (target.classList.contains("all-clear")) {
+    if (target.classList.contains('all-clear')) {
         Calculator_Reset();
         Update_Display();
         return;
